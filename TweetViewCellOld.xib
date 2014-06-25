@@ -69,7 +69,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mw-r9-CXX">
-                                <rect key="frame" x="124" y="12" width="17" height="17"/>
+                                <rect key="frame" x="107" y="12" width="17" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="17" id="5u4-98-w2B"/>
@@ -98,41 +98,17 @@
                                     <action selector="doReply:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bil-gO-Lu7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMb-m4-31V">
-                                <rect key="frame" x="147" y="13" width="30" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="Fsi-NB-6V2"/>
-                                    <constraint firstAttribute="width" constant="30" id="fbc-84-Wxi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhn-7x-Ucq">
-                                <rect key="frame" x="80" y="13" width="30" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="eB9-T4-zCT"/>
-                                    <constraint firstAttribute="height" constant="15" id="lDm-ui-0Le"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="0c9-ss-6ML"/>
                             <constraint firstItem="5Mw-r9-CXX" firstAttribute="top" secondItem="neX-6i-cHA" secondAttribute="top" constant="12" id="2eH-Oe-q9v"/>
-                            <constraint firstItem="dMb-m4-31V" firstAttribute="leading" secondItem="5Mw-r9-CXX" secondAttribute="trailing" constant="6" id="5ro-V7-rSs"/>
-                            <constraint firstItem="dMb-m4-31V" firstAttribute="top" secondItem="neX-6i-cHA" secondAttribute="top" constant="13" id="9gX-kx-b0V"/>
-                            <constraint firstAttribute="trailing" secondItem="dMb-m4-31V" secondAttribute="trailing" constant="55" id="JI5-ye-sLA"/>
+                            <constraint firstAttribute="trailing" secondItem="5Mw-r9-CXX" secondAttribute="trailing" constant="108" id="HxY-Zo-56c"/>
                             <constraint firstItem="XTv-aU-xjY" firstAttribute="top" secondItem="neX-6i-cHA" secondAttribute="top" constant="12" id="KTB-t5-4au"/>
-                            <constraint firstItem="5Mw-r9-CXX" firstAttribute="leading" secondItem="Xhn-7x-Ucq" secondAttribute="trailing" constant="14" id="jf1-eC-UsL"/>
+                            <constraint firstItem="5Mw-r9-CXX" firstAttribute="leading" secondItem="XTv-aU-xjY" secondAttribute="trailing" constant="33" id="YmF-IG-Z6e"/>
                             <constraint firstItem="ZKT-dJ-6S9" firstAttribute="leading" secondItem="neX-6i-cHA" secondAttribute="leading" constant="7" id="jmd-yY-ApI"/>
                             <constraint firstItem="XTv-aU-xjY" firstAttribute="leading" secondItem="ZKT-dJ-6S9" secondAttribute="trailing" constant="33" id="qyy-xQ-jOb"/>
                             <constraint firstItem="ZKT-dJ-6S9" firstAttribute="top" secondItem="neX-6i-cHA" secondAttribute="top" constant="12" id="rKC-Sr-rSW"/>
-                            <constraint firstItem="Xhn-7x-Ucq" firstAttribute="top" secondItem="neX-6i-cHA" secondAttribute="top" constant="13" id="uxY-sg-pW6"/>
-                            <constraint firstItem="Xhn-7x-Ucq" firstAttribute="leading" secondItem="XTv-aU-xjY" secondAttribute="trailing" constant="6" id="zfy-kw-l6I"/>
                         </constraints>
                         <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </view>
@@ -160,8 +136,6 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="favButton" destination="5Mw-r9-CXX" id="RMg-vI-LaV"/>
-                <outlet property="numOfFavLabel" destination="dMb-m4-31V" id="qFo-sA-cue"/>
-                <outlet property="numOfRetweetLabel" destination="Xhn-7x-Ucq" id="g64-K3-hm3"/>
                 <outlet property="profileImageView" destination="sia-2J-yih" id="EII-Vc-rJC"/>
                 <outlet property="retweetButton" destination="XTv-aU-xjY" id="ncR-Aa-feq"/>
                 <outlet property="screenName" destination="XIk-SL-Lh8" id="Tr7-Yx-Vuu"/>

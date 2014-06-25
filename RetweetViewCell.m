@@ -14,6 +14,8 @@
 @property (strong, nonatomic)           Tweet  *tweet;
 @property (weak, nonatomic) IBOutlet UIButton  *favButton;
 @property (weak, nonatomic) IBOutlet UIButton  *retweetButton;
+@property (weak, nonatomic) IBOutlet UILabel *numOfFavLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numOfRetweetLabel;
 
 
 @end
@@ -46,6 +48,10 @@
     self.timeSince.text  = [tweet timeSinceNow];
     self.retweeterName.text = [ NSString stringWithFormat:@"%@ retweeted", [[tweet creator] screenName]];
     
+    self.numOfFavLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[tweet favoriteCount]];
+    self.numOfRetweetLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[tweet numOfRetweets]];
+
+
     NSURLRequest *request = [NSURLRequest requestWithURL:[[tweet retweeter] profileImageUrl]];
     
     __weak RetweetViewCell *weakCell = self;
@@ -93,6 +99,9 @@
     //self.tweetText.text  = [tweet tweetText];
     self.timeSince.text  = [tweet timeSinceNow];
     self.retweeterName.text = [ NSString stringWithFormat:@"%@ retweeted", [[tweet creator] screenName]];
+    
+    self.numOfFavLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[tweet favoriteCount]];
+    self.numOfRetweetLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[tweet numOfRetweets]];
 
     return;
 }
@@ -118,6 +127,8 @@
 
         }
         //NSLog(@"response object: %@", responseObject);
+        self.numOfFavLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[responseTweet favoriteCount]];
+
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Tweet Favorited" object:self];
 
         
@@ -139,6 +150,8 @@
         self.tweet.retweetCount = responseTweet.retweetCount;
         //NSLog(@"Retweet count %d", [responseTweet retweetCount]);
         
+        self.numOfRetweetLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[responseTweet numOfRetweets]];
+
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Retweetted" object:self];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

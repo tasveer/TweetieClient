@@ -13,7 +13,9 @@
 @interface TweetViewCell()
 @property (weak, nonatomic) IBOutlet UIButton *favButton;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
+@property (weak, nonatomic) IBOutlet UILabel *numOfFavLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *numOfRetweetLabel;
 @property (strong, nonatomic)        Tweet    *tweet;
 @property (nonatomic)                BOOL     favorited;
 @end
@@ -47,6 +49,9 @@
     //self.tweetText.text  = [tweet tweetText];
     //NSLog(@"Loading tweet with text: %@", self.tweetText.text);
     self.timeSince.text  = [tweet timeSinceNow];
+
+    self.numOfFavLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[tweet favoriteCount]];
+    self.numOfRetweetLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[tweet numOfRetweets]];
 
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[[tweet creator] profileImageUrl]];
@@ -96,6 +101,8 @@
     //NSLog(@"Configuring tweet with text: %@", self.tweetText.text);
 
     self.timeSince.text  = [tweet timeSinceNow];
+    self.numOfFavLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[tweet favoriteCount]];
+    self.numOfRetweetLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[tweet numOfRetweets]];
     
     return;
 }
@@ -117,6 +124,8 @@
             self.tweet.favorited = NO;
         }
         self.tweet.rawTweet = [responseTweet rawTweet];
+        self.numOfFavLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[responseTweet favoriteCount]];
+
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Tweet Favorited" object:self];
 
         
@@ -137,6 +146,8 @@
         self.tweet.retweetCount = responseTweet.retweetCount;
         self.tweet.rawTweet = [responseTweet rawTweet];
         NSLog(@"Retweet count %d", [responseTweet retweetCount]);
+
+        self.numOfRetweetLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[responseTweet numOfRetweets]];
 
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Retweetted" object:self];
 

@@ -219,8 +219,11 @@
         NSDictionary *retweetedStatus = self.tweet.rawTweet[@"retweeted_status"];
         tweetId = retweetedStatus[@"id_str"];
     }
+    
+    tweetId = [self.tweet getTweetId];
+    
 
-    ComposeViewController *composeTweetVc = [[ ComposeViewController alloc] initWithNibName:@"ComposeViewController" bundle:nil replyToText:replyTo toStatus:tweetId];
+    ComposeViewController *composeTweetVc = [[ ComposeViewController alloc]  initWithNibName:@"ComposeViewController" bundle:nil replyToText:replyTo toStatus:tweetId];
     //composeTweetVc.delegate = self;
     [self.navigationController pushViewController:composeTweetVc animated:YES];
     

@@ -114,7 +114,9 @@
     self.userHandle.text    = [loggednInUser screenName];
     if ([self.replyTo isEqualToString:@""]) {
         self.toTweet.text       = @"";
-        self.title = @"140";
+        //self.toTweet.text       = self.retweetStatus;
+        //self.title = @"140";
+        self.title = [NSString stringWithFormat:@"%d", 140-[self.replyTo length]];
     } else {
         self.toTweet.text = self.replyTo;
         self.title = [NSString stringWithFormat:@"%d", 140-[self.replyTo length]];

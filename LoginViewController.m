@@ -12,6 +12,7 @@
 
 @interface LoginViewController ()
 - (IBAction)login:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *tweetBird;
 
 @end
 
@@ -39,6 +40,14 @@
 }
 
 - (IBAction)login:(id)sender {
+    
+    /*
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:50 options:0 animations:^{
+        self.tweetBird.transform = CGAffineTransformMakeScale(10, 10);
+    } completion:^(BOOL finished) {
+        
+    }];
+     */
     [[TwitterClient instance] login ];
 }
 @end
