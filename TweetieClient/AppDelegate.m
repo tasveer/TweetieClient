@@ -7,6 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "TimelineViewController.h"
+#import "NSURL+dictionaryFromQueryString.h"
+#import "TwitterClient.h"
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 
 @implementation AppDelegate
 
@@ -14,6 +21,34 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    TwitterClient *client = [TwitterClient instance];
+    
+    //[client deauthorize];
+    //[client.requestSerializer removeAccessToken];
+
+
+    if ([client isAuthorized]) {
+        NSLog(@"client is authorized");
+        TimelineViewController    *tvc = [[TimelineViewController alloc] init ];
+        UINavigationController    *nvc = [[ UINavigationController alloc] initWithRootViewController:tvc ];
+        self.window.rootViewController = nvc;
+        
+        nvc.navigationBar.barTintColor = UIColorFromRGB(0x067AB5);
+
+    } else {
+        NSLog(@"Not authorized yet...");
+        LoginViewController       *lvc = [[LoginViewController alloc] init];
+        //TimelineViewController    *tvc = [[TimelineViewController alloc] init ];
+        //UINavigationController    *nvc = [[ UINavigationController alloc] initWithRootViewController:tvc ];
+        self.window.rootViewController = lvc;
+        //[self.window.rootViewController presentModalViewController:lvc animated:YES];
+
+        //TimelineViewController    *tvc = [[TimelineViewController alloc] init ];
+        //[self.window.rootViewController addChildViewController:tvc];
+
+    }
+
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
@@ -44,6 +79,66 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    //NSLog(@"url.scheme %@ url.host %@", url.scheme, url.host);
+    if ([url.scheme isEqualToString:@"koltweetie"])
+    {
+        if ([url.host isEqualToString:@"oauth"])
+        {
+            NSDictionary *parameters = [url dictionaryFromQueryString];
+            //NSLog(@"parameters: %@", parameters);
+            if (parameters[@"oauth_token"] && parameters[@"oauth_verifier"]) {
+                
+                
+                /*
+                [self.window.rootViewController dismissViewControllerAnimated:YES completion:^{
+                    self.window.rootViewController = tvc;
+                }];
+                [self.window makeKeyAndVisible];
+                 */
+                
+                
+
+                TwitterClient *client = [TwitterClient instance];
+                [client fetchAccessTokenWithPath:@"/oauth/access_token"
+                                          method:@"POST"
+                                    requestToken:[BDBOAuthToken tokenWithQueryString:url.query]
+                                         success:^(BDBOAuthToken *accessToken) {
+                                             NSLog(@"Access token granted");
+                                             [client.requestSerializer saveAccessToken:accessToken];
+                                             
+                                             [self.window.rootViewController dismissViewControllerAnimated:YES completion:^{
+                                                 TimelineViewController    *tvc = [[TimelineViewController alloc] init ];
+                                                 UINavigationController    *nvc = [[ UINavigationController alloc] initWithRootViewController:tvc ];
+                                                 self.window.rootViewController = nvc;
+                                                 nvc.navigationBar.barTintColor = UIColorFromRGB(0x067AB5);
+                                                 NSLog(@"Pushing time line view controller");
+                                             }];
+
+                                             /*
+                                             TimelineViewController    *tvc = [[TimelineViewController alloc] init ];
+                                             UINavigationController    *nvc = [[ UINavigationController alloc] initWithRootViewController:tvc ];
+                                             self.window.rootViewController = nvc;
+                                             nvc.navigationBar.barTintColor = UIColorFromRGB(0x067AB5);
+                                              */
+
+                                             //NSLog(@"Pushing time line view controller");
+
+                                         } failure:^(NSError *error) {
+                                             NSLog(@"Access token error %@", [error description]);
+                                         }];
+                
+            }
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end
