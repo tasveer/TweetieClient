@@ -18,7 +18,7 @@ Time Spent: 20 Hours
 **Optional features implemented**
 - When composing, you should have a countdown in the upper right for the tweet limit.
 - After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
-- Retweeting and favoriting should increment the retweet and favorite count.
+- Retweeting and favoriting should increment the retweet and favorite count. Also added labels to home time line tweet table cells to show tweet and fav count of a tweet.
 - User should be able to -unretweet- / unfavorite and should decrement the -retweet- and favorite count. Unretweet not implemented. Once the users retweets, the retweet button is disabled.
 - Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
 - User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
