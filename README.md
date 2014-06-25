@@ -27,4 +27,4 @@ Time Spent: 20 Hours
      
 Here are the screen shots
 
-![Twitter Client Demo](https://github.com/tasveer/Yelp/blob/master/YelpDemo.gif?raw=true)
+![Twitter Client Demo](https://github.com/tasveer/TweetieClient/blob/master/Twitter%20Client%20Demo.gif?raw=true)
