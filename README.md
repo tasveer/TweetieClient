@@ -21,6 +21,9 @@ Time Spent: 25 Hours
 
 A Twitter client using Oauth 1.0a. Uses BDBOAuth1RequestOperationManager. Mantle has been used to extract twitter data to create models for Users and Tweets. Auto layout and dynamic sizing is used to control the height of the Table rows.
 
+Here are the screen shots
+
+![Twitter Client Demo](https://github.com/tasveer/TweetieClient/blob/master/TwitterRedux.gif?raw=true)
 
 Time Spent: 20 Hours
 
