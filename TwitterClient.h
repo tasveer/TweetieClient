@@ -39,4 +39,10 @@
 
 // Remove a tweet
 -(AFHTTPRequestOperation *) removeTweet:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation *, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+// Get Mentions
+-(AFHTTPRequestOperation *) getMentions:(int) limit success:(void (^)(AFHTTPRequestOperation *, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+// Get User Status
+-(AFHTTPRequestOperation *) getUserStatusWithUserId:(NSString *)userId numTweets:(int)limit success:(void (^)(AFHTTPRequestOperation *, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 @end

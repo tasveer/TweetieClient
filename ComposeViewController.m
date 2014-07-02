@@ -145,7 +145,8 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"No Activity" object:self];
     }
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) tweet:(id)sender {

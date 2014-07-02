@@ -8,7 +8,8 @@
 
 #import "TweetViewCell.h"
 #import "UIImageView+AFNetworking.h"
-#import "ComposeViewController.h"
+//#import "ComposeViewController.h"
+#import "ProfileViewController.h"
 
 @interface TweetViewCell()
 @property (weak, nonatomic) IBOutlet UIButton *favButton;
@@ -18,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *numOfRetweetLabel;
 @property (strong, nonatomic)        Tweet    *tweet;
 @property (nonatomic)                BOOL     favorited;
+
+- (IBAction)onImageTap:(UITapGestureRecognizer *)sender;
+
 @end
 
 @implementation TweetViewCell
@@ -46,7 +50,8 @@
     
     self.tweetText.text = nil;
     self.tweetText.attributedText = [[NSAttributedString alloc] initWithString:[tweet tweetText]];
-    //self.tweetText.text  = [tweet tweetText];
+    self.tweetText.linkTextAttributes  = @{NSForegroundColorAttributeName:[UIColor blueColor]};
+
     //NSLog(@"Loading tweet with text: %@", self.tweetText.text);
     self.timeSince.text  = [tweet timeSinceNow];
 
@@ -86,6 +91,12 @@
     } else {
         [self.retweetButton setEnabled:YES];
     }
+    
+    UITapGestureRecognizer *tapGesturerecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onImageTap:)];
+    
+    tapGesturerecognizer.numberOfTapsRequired = 1;
+    [self.profileImageView addGestureRecognizer:tapGesturerecognizer];
+
 }
 
 - (void) configureTweetCellWithTweet:(Tweet *) tweet {
@@ -178,4 +189,10 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Tweet Reply" object:self userInfo:replyDetails];
 }
 
+- (void)onImageTap:(UITapGestureRecognizer *)tapGesture {
+    
+    NSDictionary *tweeterDetail = @{@"Tweeter": self.tweet.creator};
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Show Tweeters Profile" object:self userInfo:tweeterDetail];
+}
 @end

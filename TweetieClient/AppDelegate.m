@@ -11,6 +11,13 @@
 #import "TimelineViewController.h"
 #import "NSURL+dictionaryFromQueryString.h"
 #import "TwitterClient.h"
+#import "ContainerViewController.h"
+#import "MenuViewController.h"
+#import "MentionsViewController.h"
+#import "ProfileViewController.h"
+#import "User.h"
+
+
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -30,11 +37,15 @@
 
     if ([client isAuthorized]) {
         NSLog(@"client is authorized");
+        /*
         TimelineViewController    *tvc = [[TimelineViewController alloc] init ];
         UINavigationController    *nvc = [[ UINavigationController alloc] initWithRootViewController:tvc ];
         self.window.rootViewController = nvc;
         
         nvc.navigationBar.barTintColor = UIColorFromRGB(0x067AB5);
+         */
+        [User currentUser];
+        [self addSignedInViewControllers];
 
     } else {
         NSLog(@"Not authorized yet...");
@@ -81,6 +92,34 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+-(void) addSignedInViewControllers {
+    
+    ContainerViewController *cvc = [[ContainerViewController alloc] init];
+    MenuViewController      *mvc = [[MenuViewController alloc] init];
+    TimelineViewController  *tvc = [[TimelineViewController alloc] init ];
+    MentionsViewController  *menVc = [[MentionsViewController alloc] init];
+    ProfileViewController  *pvc = [[ProfileViewController alloc] init];
+    
+    [cvc addContainerViewController:tvc];
+    [cvc addContainerViewController:menVc];
+    [cvc addContainerViewController:pvc];
+    
+    
+    UINavigationController  *nvc = [[ UINavigationController alloc] initWithRootViewController:tvc ];
+    //[nvc addChildViewController:tvc];
+    [nvc addChildViewController:tvc];
+    
+    
+    nvc.navigationBar.barTintColor = UIColorFromRGB(0x067AB5);
+    
+    cvc.menuViewController = mvc;
+    cvc.currentViewController = nvc;
+    
+    
+    self.window.rootViewController = cvc;
+    
+}
+
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
@@ -114,11 +153,15 @@
                                              [client.requestSerializer saveAccessToken:accessToken];
                                              
                                              [self.window.rootViewController dismissViewControllerAnimated:YES completion:^{
+                                                 
+                                                 NSLog(@"Pushing time line view controller");
+                                                 [self addSignedInViewControllers];
+                                                 /*
                                                  TimelineViewController    *tvc = [[TimelineViewController alloc] init ];
                                                  UINavigationController    *nvc = [[ UINavigationController alloc] initWithRootViewController:tvc ];
                                                  self.window.rootViewController = nvc;
                                                  nvc.navigationBar.barTintColor = UIColorFromRGB(0x067AB5);
-                                                 NSLog(@"Pushing time line view controller");
+                                                  */
                                              }];
 
                                              /*

@@ -16,6 +16,7 @@
 #import "TweetViewController.h"
 #import "ComposeViewController.h"
 #import "LoginViewController.h"
+#import "ProfileViewController.h"
 
 @interface TimelineViewController ()
 
@@ -43,6 +44,8 @@ RetweetViewCell *_stubRetweetCell;
 
 - (void)viewDidLoad
 {
+    //NSLog(@"Timeline view did load");
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self createViewElements];
@@ -66,6 +69,11 @@ RetweetViewCell *_stubRetweetCell;
                                              selector:@selector(doNotRefreshTable)
                                                  name:@"No Activity"
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showTweetersProfile:)
+                                                 name:@"Show Tweeters Profile"
+                                               object:nil];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -77,7 +85,7 @@ RetweetViewCell *_stubRetweetCell;
         self.noRefreshREquired = NO; // reset it
     }
     
-    [User currentUser];
+    //[User currentUser];
 
 }
 
@@ -201,18 +209,35 @@ RetweetViewCell *_stubRetweetCell;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor whiteColor];
     
-    self.navigationItem.titleView = titleLabel;
+    UIImageView *tweetImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TweetWhite"]];
+    //self.navigationItem.titleView = titleLabel;
+    self.navigationItem.titleView = tweetImageView;
+
     [titleLabel sizeToFit];
     
+    /*
     UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
     [signOutButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor],  NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = signOutButton;
+     */
+
     
-    UIBarButtonItem *composeButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(composeTweet:)];
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu_bar"] style:0 target:self action:@selector(slideBack)];
+    [button setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor],  NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = button;
+
+    
+    //UIBarButtonItem *composeButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(composeTweet:)];
+    UIBarButtonItem *composeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"compose_new"] style:0 target:self action:@selector(composeTweet:)];
     [composeButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor],  NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = composeButton;
     
     [ self addPullToRefresh ];
+}
+
+- (void) slideBack {
+    NSDictionary *info = @{@"controller": self};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Show Menu" object:self userInfo:info];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -271,7 +296,6 @@ RetweetViewCell *_stubRetweetCell;
         TweetViewCell *tweetCell = [ tableView dequeueReusableCellWithIdentifier:@"TweetViewCell" ];
         [tweetCell loadTweetCellWithTweet:tweet];
         return tweetCell;
-
     }
 }
 
@@ -354,6 +378,7 @@ RetweetViewCell *_stubRetweetCell;
     [self presentViewController:lvc animated:YES completion:nil];
 }
 
+
 - (void)replyToTweet:(NSNotification *) notification {
     
     NSDictionary *replyToDetails = [notification userInfo];
@@ -367,6 +392,19 @@ RetweetViewCell *_stubRetweetCell;
 
 - (void) doNotRefreshTable {
     self.noRefreshREquired = YES;
+}
+
+- (void) showTweetersProfile:(NSNotification *)notification {
+
+    NSDictionary *replyToDetails = [notification userInfo];
+
+    User *tweeter = (User *) replyToDetails[@"Tweeter"];
+    
+    
+    ProfileViewController *profileViewcontroller = [[ProfileViewController alloc ] initWithNibName:nil bundle:nil forUser:tweeter];
+    
+    [self.navigationController pushViewController:profileViewcontroller animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning

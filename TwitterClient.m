@@ -128,4 +128,19 @@
     return [self POST:postCommand parameters:@{@"id": tweetId} success:success failure:failure];
     
 }
+
+// Get Mentions
+-(AFHTTPRequestOperation *) getMentions:(int) limit success:(void (^)(AFHTTPRequestOperation *, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    return [self GET:@"1.1/statuses/mentions_timeline.json" parameters:@{@"count": @(limit)} success:success failure:failure];
+    
+}
+
+// Get User Status
+-(AFHTTPRequestOperation *) getUserStatusWithUserId:(NSString *)userId numTweets:(int)limit success:(void (^)(AFHTTPRequestOperation *, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    return [self GET:@"1.1/statuses/user_timeline.json" parameters:@{@"user_id": userId, @"count": @(limit)} success:success failure:failure];
+    
+}
+
 @end

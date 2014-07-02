@@ -15,7 +15,7 @@
                 <outlet property="retweetLabel" destination="hYK-kZ-mYh" id="cdB-Fl-O3j"/>
                 <outlet property="retweetView" destination="XT2-hp-mS3" id="etf-Aw-LzI"/>
                 <outlet property="tweetDate" destination="P2W-aR-YCl" id="HRH-kj-RAO"/>
-                <outlet property="tweetText" destination="f9k-TY-oKM" id="eb9-jA-z9W"/>
+                <outlet property="tweetText" destination="f9k-TY-oKM" id="ACS-3Y-MRF"/>
                 <outlet property="tweetTime" destination="P2Q-PI-aLk" id="KAl-Ne-c2G"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,9 +25,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dRB-3V-a7d">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dRB-3V-a7d">
                     <rect key="frame" x="14" y="92" width="50" height="50"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="W4g-yQ-EL0"/>
                         <constraint firstAttribute="width" constant="50" id="oEm-ry-toi"/>

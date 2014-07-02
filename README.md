@@ -1,6 +1,24 @@
 # Twitter client
 ==============
 
+## Twitter Client Redux 07/01/14
+
+Time Spent: 25 Hours
+
+# Completed the following things
+- Hamburger menu
+-- Dragging anywhere in the view should reveal the menu.
+-- The menu should include links to your profile, the home timeline, and the mentions view.
+
+- Profile page
+-- Contains the user header view
+-- (Optional) Implement the paging view for the user description.
+-- (Optional) As the paging view moves, increase the opacity of the background screen.
+-- Contains a section with the users basic stats: # tweets, # following, # followers
+- Home Timeline
+-- Tapping on a user image should bring up that user's profile page
+
+
 A Twitter client using Oauth 1.0a. Uses BDBOAuth1RequestOperationManager. Mantle has been used to extract twitter data to create models for Users and Tweets. Auto layout and dynamic sizing is used to control the height of the Table rows.
 
 

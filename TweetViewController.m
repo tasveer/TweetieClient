@@ -11,6 +11,7 @@
 #import "NSDate+DateTools.h"
 #import "TwitterClient.h"
 #import "ComposeViewController.h"
+#import "ProfileViewController.h"
 
 
 @interface TweetViewController ()
@@ -28,6 +29,7 @@
 @property (nonatomic)                BOOL        favorited;
 @property (nonatomic)                BOOL        changed;  // Marks if user made any change, like fav/unfav, or retweet
 
+- (IBAction)onImageTap:(UITapGestureRecognizer *)sender;
 
 @end
 
@@ -73,7 +75,8 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"No Activity" object:self];
     }
 
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,11 +86,14 @@
 }
 
 - (void) loadTweetViewWithTweet:(Tweet *) tweet {
+    
+    //NSLog(@"Loading tweet view");
     if (tweet.retweetedAt == nil) {
         [self.retweetView setAlpha:0.0];
         self.creatorName.text = [[tweet creator] name];
         self.creatorText.text = [[tweet creator] screenName];
         self.tweetText.text =   [tweet tweetText];
+        self.tweetText.linkTextAttributes  = @{NSForegroundColorAttributeName:[UIColor blueColor]};
         self.retweetCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)tweet.retweetCount];
         self.favCount.text     = [NSString stringWithFormat:@"%lu", (unsigned long)tweet.favCount];
         self.tweetTime.text = [tweet.createdAt formattedDateWithFormat:@"hh:mm a"];
@@ -152,6 +158,12 @@
         }
     }
     
+    // Add a tap gesture on image
+    //NSLog(@"Adding a tap gesture");
+    UITapGestureRecognizer *tapGesturerecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onImageTap:)];
+    
+    tapGesturerecognizer.numberOfTapsRequired = 1;
+    [self.profileImageView addGestureRecognizer:tapGesturerecognizer];
 }
 
 - (IBAction)favorite:(UIButton *)sender {
@@ -229,4 +241,13 @@
     
 }
 
+- (void) onImageTap:(UITapGestureRecognizer *)sender {
+    //NSLog(@"Got image tap");
+    User *user = self.tweet.retweetedAt == nil ? self.tweet.creator : self.tweet.retweeter;
+    
+    ProfileViewController *profileViewcontroller = [[ProfileViewController alloc ] initWithNibName:nil bundle:nil forUser:user];
+    
+    [self.navigationController pushViewController:profileViewcontroller animated:YES];
+
+}
 @end

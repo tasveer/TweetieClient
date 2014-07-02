@@ -10,6 +10,30 @@
 		377D156B1959C6EB004E4E67 /* retweet_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 377D156A1959C6EB004E4E67 /* retweet_blue.png */; };
 		377D156D1959DD14004E4E67 /* bird_blue_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 377D156C1959DD14004E4E67 /* bird_blue_48.png */; };
 		377D156F1959DE25004E4E67 /* bird_gray_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 377D156E1959DE25004E4E67 /* bird_gray_48.png */; };
+		377D1575195CB87E004E4E67 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 377D1573195CB87E004E4E67 /* ContainerViewController.m */; };
+		377D1576195CB87E004E4E67 /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377D1574195CB87E004E4E67 /* ContainerViewController.xib */; };
+		377D1620195F2A07004E4E67 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 377D161E195F2A07004E4E67 /* MenuViewController.m */; };
+		377D1621195F2A07004E4E67 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377D161F195F2A07004E4E67 /* MenuViewController.xib */; };
+		377D1623195F2D04004E4E67 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 377D1622195F2D04004E4E67 /* menu.png */; };
+		377D1625195F2D8B004E4E67 /* signpost.png in Resources */ = {isa = PBXBuildFile; fileRef = 377D1624195F2D8B004E4E67 /* signpost.png */; };
+		377D1629195F34AE004E4E67 /* ProfileTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 377D1627195F34AE004E4E67 /* ProfileTableCell.m */; };
+		377D162A195F34AE004E4E67 /* ProfileTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377D1628195F34AE004E4E67 /* ProfileTableCell.xib */; };
+		377D162E195F4D64004E4E67 /* MenuTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 377D162C195F4D64004E4E67 /* MenuTableCell.m */; };
+		377D162F195F4D64004E4E67 /* MenuTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377D162D195F4D64004E4E67 /* MenuTableCell.xib */; };
+		377D1638195FD128004E4E67 /* MentionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 377D1636195FD128004E4E67 /* MentionsViewController.m */; };
+		377D1639195FD128004E4E67 /* MentionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377D1637195FD128004E4E67 /* MentionsViewController.xib */; };
+		377D164219609CE3004E4E67 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 377D164019609CE3004E4E67 /* ProfileViewController.m */; };
+		377D164319609CE3004E4E67 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377D164119609CE3004E4E67 /* ProfileViewController.xib */; };
+		377D16471960D1C6004E4E67 /* StatsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 377D16451960D1C6004E4E67 /* StatsViewCell.m */; };
+		377D16481960D1C6004E4E67 /* StatsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377D16461960D1C6004E4E67 /* StatsViewCell.xib */; };
+		377D164A1961A336004E4E67 /* menuWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 377D16491961A336004E4E67 /* menuWhite.png */; };
+		377D164E1961AF55004E4E67 /* ProfileHeaderPagingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 377D164C1961AF55004E4E67 /* ProfileHeaderPagingCell.m */; };
+		377D164F1961AF55004E4E67 /* ProfileHeaderPagingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377D164D1961AF55004E4E67 /* ProfileHeaderPagingCell.xib */; };
+		377D165319621D56004E4E67 /* menu_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 377D165219621D56004E4E67 /* menu_bar.png */; };
+		377D165719622510004E4E67 /* compose_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 377D165619622510004E4E67 /* compose_new.png */; };
+		377D1659196225CB004E4E67 /* Tweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 377D1658196225CB004E4E67 /* Tweet.png */; };
+		377D165B19622781004E4E67 /* TweetWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 377D165A19622781004E4E67 /* TweetWhite.png */; };
+		377D16A51963865B004E4E67 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 377D16A41963865B004E4E67 /* UIImage+ImageEffects.m */; };
 		379EBE2B1953F6DD00226FAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379EBE2A1953F6DD00226FAB /* Foundation.framework */; };
 		379EBE2D1953F6DD00226FAB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379EBE2C1953F6DD00226FAB /* CoreGraphics.framework */; };
 		379EBE2F1953F6DD00226FAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379EBE2E1953F6DD00226FAB /* UIKit.framework */; };
@@ -60,6 +84,39 @@
 		377D156A1959C6EB004E4E67 /* retweet_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retweet_blue.png; sourceTree = "<group>"; };
 		377D156C1959DD14004E4E67 /* bird_blue_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_blue_48.png; sourceTree = "<group>"; };
 		377D156E1959DE25004E4E67 /* bird_gray_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_gray_48.png; sourceTree = "<group>"; };
+		377D1572195CB87E004E4E67 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		377D1573195CB87E004E4E67 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		377D1574195CB87E004E4E67 /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
+		377D161D195F2A07004E4E67 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		377D161E195F2A07004E4E67 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		377D161F195F2A07004E4E67 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		377D1622195F2D04004E4E67 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		377D1624195F2D8B004E4E67 /* signpost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signpost.png; sourceTree = "<group>"; };
+		377D1626195F34AE004E4E67 /* ProfileTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableCell.h; sourceTree = "<group>"; };
+		377D1627195F34AE004E4E67 /* ProfileTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableCell.m; sourceTree = "<group>"; };
+		377D1628195F34AE004E4E67 /* ProfileTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileTableCell.xib; sourceTree = "<group>"; };
+		377D162B195F4D64004E4E67 /* MenuTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableCell.h; sourceTree = "<group>"; };
+		377D162C195F4D64004E4E67 /* MenuTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableCell.m; sourceTree = "<group>"; };
+		377D162D195F4D64004E4E67 /* MenuTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableCell.xib; sourceTree = "<group>"; };
+		377D1635195FD128004E4E67 /* MentionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionsViewController.h; sourceTree = "<group>"; };
+		377D1636195FD128004E4E67 /* MentionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsViewController.m; sourceTree = "<group>"; };
+		377D1637195FD128004E4E67 /* MentionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MentionsViewController.xib; sourceTree = "<group>"; };
+		377D163F19609CE3004E4E67 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		377D164019609CE3004E4E67 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		377D164119609CE3004E4E67 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		377D16441960D1C6004E4E67 /* StatsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsViewCell.h; sourceTree = "<group>"; };
+		377D16451960D1C6004E4E67 /* StatsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsViewCell.m; sourceTree = "<group>"; };
+		377D16461960D1C6004E4E67 /* StatsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatsViewCell.xib; sourceTree = "<group>"; };
+		377D16491961A336004E4E67 /* menuWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuWhite.png; sourceTree = "<group>"; };
+		377D164B1961AF55004E4E67 /* ProfileHeaderPagingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderPagingCell.h; sourceTree = "<group>"; };
+		377D164C1961AF55004E4E67 /* ProfileHeaderPagingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderPagingCell.m; sourceTree = "<group>"; };
+		377D164D1961AF55004E4E67 /* ProfileHeaderPagingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderPagingCell.xib; sourceTree = "<group>"; };
+		377D165219621D56004E4E67 /* menu_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_bar.png; sourceTree = "<group>"; };
+		377D165619622510004E4E67 /* compose_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose_new.png; sourceTree = "<group>"; };
+		377D1658196225CB004E4E67 /* Tweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tweet.png; sourceTree = "<group>"; };
+		377D165A19622781004E4E67 /* TweetWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TweetWhite.png; sourceTree = "<group>"; };
+		377D16A31963865B004E4E67 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		377D16A41963865B004E4E67 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		379EBE271953F6DD00226FAB /* TweetieClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetieClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		379EBE2A1953F6DD00226FAB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		379EBE2C1953F6DD00226FAB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,9 +193,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		377D16A219638634004E4E67 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				377D16A31963865B004E4E67 /* UIImage+ImageEffects.h */,
+				377D16A41963865B004E4E67 /* UIImage+ImageEffects.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		379EBE1E1953F6DD00226FAB = {
 			isa = PBXGroup;
 			children = (
+				377D16A219638634004E4E67 /* Categories */,
 				379EBE7B1955D4B200226FAB /* Images */,
 				379EBE751955408400226FAB /* Views */,
 				379EBE6919549C5400226FAB /* Models */,
@@ -238,6 +305,18 @@
 				379EBE8E19572F0600226FAB /* ComposeViewController.h */,
 				379EBE8F19572F0600226FAB /* ComposeViewController.m */,
 				379EBE9019572F0600226FAB /* ComposeViewController.xib */,
+				377D1572195CB87E004E4E67 /* ContainerViewController.h */,
+				377D1573195CB87E004E4E67 /* ContainerViewController.m */,
+				377D1574195CB87E004E4E67 /* ContainerViewController.xib */,
+				377D161D195F2A07004E4E67 /* MenuViewController.h */,
+				377D161E195F2A07004E4E67 /* MenuViewController.m */,
+				377D161F195F2A07004E4E67 /* MenuViewController.xib */,
+				377D1635195FD128004E4E67 /* MentionsViewController.h */,
+				377D1636195FD128004E4E67 /* MentionsViewController.m */,
+				377D1637195FD128004E4E67 /* MentionsViewController.xib */,
+				377D163F19609CE3004E4E67 /* ProfileViewController.h */,
+				377D164019609CE3004E4E67 /* ProfileViewController.m */,
+				377D164119609CE3004E4E67 /* ProfileViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -271,6 +350,18 @@
 				379EBE841956192600226FAB /* RetweetViewCell.h */,
 				379EBE851956192600226FAB /* RetweetViewCell.m */,
 				379EBE861956192600226FAB /* RetweetViewCell.xib */,
+				377D1626195F34AE004E4E67 /* ProfileTableCell.h */,
+				377D1627195F34AE004E4E67 /* ProfileTableCell.m */,
+				377D1628195F34AE004E4E67 /* ProfileTableCell.xib */,
+				377D162B195F4D64004E4E67 /* MenuTableCell.h */,
+				377D162C195F4D64004E4E67 /* MenuTableCell.m */,
+				377D162D195F4D64004E4E67 /* MenuTableCell.xib */,
+				377D164B1961AF55004E4E67 /* ProfileHeaderPagingCell.h */,
+				377D164C1961AF55004E4E67 /* ProfileHeaderPagingCell.m */,
+				377D164D1961AF55004E4E67 /* ProfileHeaderPagingCell.xib */,
+				377D16441960D1C6004E4E67 /* StatsViewCell.h */,
+				377D16451960D1C6004E4E67 /* StatsViewCell.m */,
+				377D16461960D1C6004E4E67 /* StatsViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -278,6 +369,13 @@
 		379EBE7B1955D4B200226FAB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				377D165A19622781004E4E67 /* TweetWhite.png */,
+				377D1658196225CB004E4E67 /* Tweet.png */,
+				377D165619622510004E4E67 /* compose_new.png */,
+				377D165219621D56004E4E67 /* menu_bar.png */,
+				377D16491961A336004E4E67 /* menuWhite.png */,
+				377D1622195F2D04004E4E67 /* menu.png */,
+				377D1624195F2D8B004E4E67 /* signpost.png */,
 				377D156E1959DE25004E4E67 /* bird_gray_48.png */,
 				377D156C1959DD14004E4E67 /* bird_blue_48.png */,
 				377D156A1959C6EB004E4E67 /* retweet_blue.png */,
@@ -369,16 +467,31 @@
 			files = (
 				379EBE811955D4CF00226FAB /* retweet.png in Resources */,
 				377D156F1959DE25004E4E67 /* bird_gray_48.png in Resources */,
+				377D165319621D56004E4E67 /* menu_bar.png in Resources */,
 				379EBE801955D4CF00226FAB /* reply.png in Resources */,
+				377D16481960D1C6004E4E67 /* StatsViewCell.xib in Resources */,
 				379EBE351953F6DD00226FAB /* InfoPlist.strings in Resources */,
+				377D1625195F2D8B004E4E67 /* signpost.png in Resources */,
+				377D162F195F4D64004E4E67 /* MenuTableCell.xib in Resources */,
+				377D1639195FD128004E4E67 /* MentionsViewController.xib in Resources */,
 				377D156D1959DD14004E4E67 /* bird_blue_48.png in Resources */,
+				377D165B19622781004E4E67 /* TweetWhite.png in Resources */,
+				377D165719622510004E4E67 /* compose_new.png in Resources */,
+				377D164A1961A336004E4E67 /* menuWhite.png in Resources */,
+				377D1576195CB87E004E4E67 /* ContainerViewController.xib in Resources */,
 				379EBE741954E8C300226FAB /* TimelineViewController.xib in Resources */,
 				379EBE831955D4CF00226FAB /* compose.png in Resources */,
 				379EBE8D19565C9100226FAB /* TweetViewController.xib in Resources */,
+				377D164319609CE3004E4E67 /* ProfileViewController.xib in Resources */,
+				377D164F1961AF55004E4E67 /* ProfileHeaderPagingCell.xib in Resources */,
 				379EBE7A19554B8D00226FAB /* TweetViewCell.xib in Resources */,
 				379EBE9219572F0600226FAB /* ComposeViewController.xib in Resources */,
 				379EBE941957945B00226FAB /* faved.png in Resources */,
+				377D1623195F2D04004E4E67 /* menu.png in Resources */,
+				377D162A195F34AE004E4E67 /* ProfileTableCell.xib in Resources */,
 				379EBE3D1953F6DD00226FAB /* Images.xcassets in Resources */,
+				377D1621195F2A07004E4E67 /* MenuViewController.xib in Resources */,
+				377D1659196225CB004E4E67 /* Tweet.png in Resources */,
 				379EBE621953F99F00226FAB /* LoginViewController.xib in Resources */,
 				379EBE821955D4CF00226FAB /* fav.png in Resources */,
 				379EBE881956192600226FAB /* RetweetViewCell.xib in Resources */,
@@ -434,16 +547,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377D1629195F34AE004E4E67 /* ProfileTableCell.m in Sources */,
+				377D1638195FD128004E4E67 /* MentionsViewController.m in Sources */,
+				377D164219609CE3004E4E67 /* ProfileViewController.m in Sources */,
+				377D16A51963865B004E4E67 /* UIImage+ImageEffects.m in Sources */,
 				379EBE611953F99F00226FAB /* LoginViewController.m in Sources */,
 				379EBE871956192600226FAB /* RetweetViewCell.m in Sources */,
 				379EBE731954E8C300226FAB /* TimelineViewController.m in Sources */,
+				377D164E1961AF55004E4E67 /* ProfileHeaderPagingCell.m in Sources */,
 				379EBE9119572F0600226FAB /* ComposeViewController.m in Sources */,
 				379EBE3B1953F6DD00226FAB /* AppDelegate.m in Sources */,
 				379EBE6C19549C9600226FAB /* User.m in Sources */,
+				377D162E195F4D64004E4E67 /* MenuTableCell.m in Sources */,
 				379EBE8C19565C9100226FAB /* TweetViewController.m in Sources */,
+				377D16471960D1C6004E4E67 /* StatsViewCell.m in Sources */,
 				379EBE6F1954A5E700226FAB /* Tweet.m in Sources */,
 				379EBE681953FC5600226FAB /* NSURL+dictionaryFromQueryString.m in Sources */,
+				377D1575195CB87E004E4E67 /* ContainerViewController.m in Sources */,
 				379EBE5C1953F8B300226FAB /* TwitterClient.m in Sources */,
+				377D1620195F2A07004E4E67 /* MenuViewController.m in Sources */,
 				379EBE7919554B8D00226FAB /* TweetViewCell.m in Sources */,
 				379EBE371953F6DD00226FAB /* main.m in Sources */,
 			);

@@ -43,7 +43,7 @@
     //http://stackoverflow.com/questions/19121367/uitextviews-in-a-uitableview-link-detection-bug-in-ios-7
 
     self.tweetText.attributedText = [[NSAttributedString alloc] initWithString:[tweet tweetText]];
-    //self.tweetText.text  = [tweet retweetText];
+    self.tweetText.linkTextAttributes  = @{NSForegroundColorAttributeName:[UIColor blueColor]};
     
     self.timeSince.text  = [tweet timeSinceNow];
     self.retweeterName.text = [ NSString stringWithFormat:@"%@ retweeted", [[tweet creator] screenName]];
@@ -88,6 +88,10 @@
         [self.retweetButton setEnabled:YES];
     }
 
+    UITapGestureRecognizer *tapGesturerecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onImageTap:)];
+    
+    tapGesturerecognizer.numberOfTapsRequired = 1;
+    [self.profileImageView addGestureRecognizer:tapGesturerecognizer];
     
 }
 
@@ -181,4 +185,12 @@
     NSDictionary *replyDetails = @{@"replyTo": replyTo, @"tweetId": tweetId};
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Tweet Reply" object:self userInfo:replyDetails];
 }
+
+- (void)onImageTap:(UITapGestureRecognizer *)tapGesture {
+    
+    NSDictionary *tweeterDetail = @{@"Tweeter": self.tweet.retweeter};
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Show Tweeters Profile" object:self userInfo:tweeterDetail];
+}
+
 @end
