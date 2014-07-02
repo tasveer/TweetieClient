@@ -15,4 +15,6 @@
 
 -(void) setProfileUser:(User *)user;
 
+-(User *)getProfileUser;
+
 @end

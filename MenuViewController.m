@@ -157,7 +157,9 @@ MenuTableCell *_stubMenuCell;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Mentions" object:self];
     } else if ([self.menuContents[indexPath.row] isEqualToString:@"Profile"]) {
         //NSLog(@"Profile selected");
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"Profile" object:self];
+        NSDictionary *userDetail = @{@"User": self.signedInUser};
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"Profile" object:self userInfo:userDetail];
     } else if ([self.menuContents[indexPath.row] isEqualToString:@"Sign Off"]) {
         //NSLog(@"Sign Off selected");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Sign Off" object:self];

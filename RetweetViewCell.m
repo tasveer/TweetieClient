@@ -88,11 +88,10 @@
         [self.retweetButton setEnabled:YES];
     }
 
-    UITapGestureRecognizer *tapGesturerecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onImageTap:)];
+    UITapGestureRecognizer *tapGesturerecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onRetweetImageTap:)];
     
     tapGesturerecognizer.numberOfTapsRequired = 1;
     [self.profileImageView addGestureRecognizer:tapGesturerecognizer];
-    
 }
 
 - (void) configureTweetCellWithTweet:(Tweet *) tweet {
@@ -186,8 +185,9 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Tweet Reply" object:self userInfo:replyDetails];
 }
 
-- (void)onImageTap:(UITapGestureRecognizer *)tapGesture {
+- (void)onRetweetImageTap:(UITapGestureRecognizer *)tapGesture {
     
+    NSLog(@"Tap on Retweet Image");
     NSDictionary *tweeterDetail = @{@"Tweeter": self.tweet.retweeter};
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Show Tweeters Profile" object:self userInfo:tweeterDetail];

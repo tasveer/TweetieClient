@@ -66,7 +66,7 @@
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(slideProfile)
+                                             selector:@selector(slideProfile:)
                                                  name:@"Profile"
                                                object:nil];
     
@@ -304,14 +304,19 @@
     }
 }
 
-- (void)slideProfile {
+- (void)slideProfile:(NSNotification *)notification {
     
     
     UINavigationController *nvc = (UINavigationController *) self.currentViewController;
     //NSLog(@"current view controller class %@", [nvc.topViewController class]);
     
+    NSDictionary *userDetails = [notification userInfo];
+    
+    User *signedInUser = (User *) userDetails[@"User"];
+    
     //NSLog(@"slideProfile %@", nvc.topViewController);
-    if ([nvc.topViewController class] == [ProfileViewController class]) {
+    if ([nvc.topViewController class] == [ProfileViewController class] &&
+        [[(ProfileViewController *)nvc.topViewController getProfileUser] name] == [signedInUser name]) {
         //NSLog(@"found timeline controller");
         if (self.contentView.frame.origin.x != 0) {
             [UIView animateWithDuration:1 delay:0.0 usingSpringWithDamping:0.9 initialSpringVelocity:5 options:0 animations:^{
@@ -323,6 +328,7 @@
     } else {
         //NSLog(@"Looking for queued view controllers");
         UIViewController *vc = [self getViewControllerForClass:[ProfileViewController class]];
+        [(ProfileViewController *) vc setProfileUser:signedInUser];
         if (vc) {
             //NSLog(@"Found view controller for class %@", [vc class]);
             

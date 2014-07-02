@@ -69,7 +69,7 @@ RetweetViewCell *_stubRetweetCell;
 {
     [super viewDidLoad];
 
-    //NSLog(@"profile view controller did load");
+    NSLog(@"profile view controller did load");
 
     [self createViewElements];
 }
@@ -87,12 +87,19 @@ RetweetViewCell *_stubRetweetCell;
     self.userForProfile = user;
 }
 
+- (User *) getProfileUser {
+    return self.userForProfile;
+}
+
 #pragma View element creation
 
 - (void) createTitleLabelForUser {
     
+    NSLog(@"Changing title label");
+
     if (self.userForProfile) {
-        
+        NSLog(@"Creating title label for user %@", [self.userForProfile name]);
+
         //NSLog(@"Changing title label");
         //self.title = [self.userForProfile name];
         /*
@@ -236,9 +243,15 @@ RetweetViewCell *_stubRetweetCell;
         self.navigationItem.leftBarButtonItem = cancelButton;
     }
     
-    
+    /*
     UIBarButtonItem *composeButton = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(composeTweet:)];
     [composeButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor],  NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
+     */
+    
+    UIBarButtonItem *composeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"compose_new"] style:0 target:self action:@selector(composeTweet:)];
+    [composeButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor],  NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = composeButton;
+    
     self.navigationItem.rightBarButtonItem = composeButton;
 }
 
