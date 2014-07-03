@@ -53,7 +53,7 @@
 
 - (AFHTTPRequestOperation *)getRecentTweet:(int) limit success:(void (^)(AFHTTPRequestOperation *, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure {
     
-    return [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:success failure:failure ];
+    return [self GET:@"1.1/statuses/home_timeline.json" parameters:@{@"count": @(limit)} success:success failure:failure ];
     
     /*
     return [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {

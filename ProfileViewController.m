@@ -24,6 +24,7 @@
 @property (strong, nonatomic)        User        *userForProfile;
 @property (strong, nonatomic)        NSMutableArray   *tweets;
 @property (nonatomic)                BOOL             signedInUser;
+@property (nonatomic, strong)        UIRefreshControl *refreshControl;
 
 
 @end
@@ -253,8 +254,102 @@ RetweetViewCell *_stubRetweetCell;
     self.navigationItem.rightBarButtonItem = composeButton;
     
     self.navigationItem.rightBarButtonItem = composeButton;
+    
+    [ self addPullToRefresh ];
+
 }
 
+#pragma loading Table
+
+-(void) fetchMoreTimeline {
+    
+    //NSLog(@"Getting timeline for infifnte scroll");
+    
+    if ([self.tweets count] == 0 && self.userForProfile != nil) {
+        [self getUserTweets:[NSString stringWithFormat:@"%lu", (unsigned long)[self.userForProfile userId]] showProgress:YES];
+    } else {
+        [self getUser];
+    }
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    Tweet *lastTweet = self.tweets[[self.tweets count] - 1 ];
+    
+    // Get 10 more tweets after the lastTweet with its tweetId
+    
+    [[TwitterClient instance] getMoreTweets:10 until:[lastTweet getTweetId] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //NSLog(@"response %@", responseObject);
+        
+        
+        //NSLog(@"------------------------------------- Got response ------------------------------------------------");
+        NSError *error = nil;
+        for (NSDictionary *dictionary in responseObject) {
+            //NSLog(@"Raw tweet dictionary %@", dictionary);
+            Tweet *aTweet = [MTLJSONAdapter modelOfClass: Tweet.class fromJSONDictionary: dictionary error: &error];
+            /*
+             if (aTweet.retweeter) {
+             NSLog(@"Retweet raw dictionary %@", dictionary);
+             }
+             */
+            aTweet.rawTweet = dictionary;
+            
+            // Sometimes the last tweet is repeated, so avoid the duplication
+            if (![[aTweet getTweetId] isEqualToString:[lastTweet getTweetId]]) {
+                [self.tweets addObject:aTweet];
+            }
+            //[aTweet dumpTweetInfo];
+        }
+        [self.tableView reloadData];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"response error %@", [error description]);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+    
+}
+
+-(void)addPullToRefresh {
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.tintColor = [UIColor grayColor];
+    
+    [self.tableView addSubview:self.refreshControl];
+    
+    /*
+     NSMutableAttributedString *refreshString = [[NSMutableAttributedString alloc] initWithString:@"Pull To Refresh"];
+     [refreshString addAttributes:@{NSForegroundColorAttributeName : [UIColor grayColor]} range:NSMakeRange(0, refreshString.length)];
+     
+     self.refreshControl.attributedTitle = refreshString;
+     */
+    
+    [self.refreshControl addTarget:self action:@selector(reloadData) forControlEvents:UIControlEventValueChanged];
+    
+    
+    return;
+}
+
+- (void)reloadData {
+ 
+    NSLog(@"Calling for pull to rfresh");
+    if (self.userForProfile != nil) {
+        [self getUserTweets:[NSString stringWithFormat:@"%lu", (unsigned long)[self.userForProfile userId]] showProgress:YES];
+    } else if (self.userForProfile == nil) {
+        [self getUser];
+    }
+    [self.refreshControl endRefreshing];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    NSInteger currentOffset = scrollView.contentOffset.y;
+    NSInteger maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+    
+    if (maximumOffset - currentOffset <= -40) {
+        //NSLog(@"reload table, reached bottom");
+        [self fetchMoreTimeline];
+    }
+}
 
 #pragma Table
 

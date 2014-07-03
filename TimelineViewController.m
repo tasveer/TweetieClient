@@ -18,6 +18,8 @@
 #import "LoginViewController.h"
 #import "ProfileViewController.h"
 
+#define kMaxTweets 100
+
 @interface TimelineViewController ()
 
 @property (strong, nonatomic)        NSMutableArray   *tweets;
@@ -99,7 +101,7 @@ RetweetViewCell *_stubRetweetCell;
     // infinite load then load older tweets upto last 60 only.
     int limit = 20;
     if (self.tweets && [self.tweets count] > 0) {
-        limit = [self.tweets count] < 60 ? [self.tweets count] : limit;
+        limit = [self.tweets count] < kMaxTweets ? [self.tweets count] : limit;
     }
     
     [[TwitterClient instance] getRecentTweet:limit success:^(AFHTTPRequestOperation *operation, id responseObject) {
