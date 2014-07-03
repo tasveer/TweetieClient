@@ -45,4 +45,7 @@
 
 // Get User Status
 -(AFHTTPRequestOperation *) getUserStatusWithUserId:(NSString *)userId numTweets:(int)limit success:(void (^)(AFHTTPRequestOperation *, id responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+// Getch more users status
+- (AFHTTPRequestOperation *)getMoreUserStatus:(NSString *)userId withLimit:(int)limit until:(NSString *)lastTweetId success:(void (^)(AFHTTPRequestOperation *operation, id  responseObject))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 @end

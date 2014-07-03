@@ -143,4 +143,11 @@
     
 }
 
+- (AFHTTPRequestOperation *)getMoreUserStatus:(NSString *)userId withLimit:(int) limit until:(NSString *) lastTweetId success:(void (^)(AFHTTPRequestOperation *operation, id  responseObject))success
+                                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    
+    return [self GET:@"1.1/statuses/user_timeline.json" parameters:@{@"user_id": userId, @"count": @(limit),
+                                                                     @"max_id": lastTweetId}  success:success failure:failure ];
+}
+
 @end

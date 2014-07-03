@@ -18,6 +18,7 @@
 #import "TweetViewController.h"
 #import "ProfileHeaderPagingCell.h"
 
+#define kTweetLimit 10
 
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -70,7 +71,7 @@ RetweetViewCell *_stubRetweetCell;
 {
     [super viewDidLoad];
 
-    NSLog(@"profile view controller did load");
+    //NSLog(@"profile view controller did load");
 
     [self createViewElements];
 }
@@ -96,10 +97,7 @@ RetweetViewCell *_stubRetweetCell;
 
 - (void) createTitleLabelForUser {
     
-    NSLog(@"Changing title label");
-
     if (self.userForProfile) {
-        NSLog(@"Creating title label for user %@", [self.userForProfile name]);
 
         //NSLog(@"Changing title label");
         //self.title = [self.userForProfile name];
@@ -277,8 +275,11 @@ RetweetViewCell *_stubRetweetCell;
     
     // Get 10 more tweets after the lastTweet with its tweetId
     
-    [[TwitterClient instance] getMoreTweets:10 until:[lastTweet getTweetId] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString *userId = [NSString stringWithFormat:@"%lu", (unsigned long)[self.userForProfile userId]];
+
+     [[TwitterClient instance] getMoreUserStatus:userId withLimit:kTweetLimit until:[lastTweet getTweetId] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         //NSLog(@"response %@", responseObject);
+        
         
         
         //NSLog(@"------------------------------------- Got response ------------------------------------------------");
@@ -332,7 +333,6 @@ RetweetViewCell *_stubRetweetCell;
 
 - (void)reloadData {
  
-    NSLog(@"Calling for pull to rfresh");
     if (self.userForProfile != nil) {
         [self getUserTweets:[NSString stringWithFormat:@"%lu", (unsigned long)[self.userForProfile userId]] showProgress:YES];
     } else if (self.userForProfile == nil) {
@@ -488,7 +488,7 @@ RetweetViewCell *_stubRetweetCell;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0 && indexPath.row == 0) {
-        NSLog(@"disabling pan gesture");
+        //NSLog(@"disabling pan gesture");
         [[NSNotificationCenter defaultCenter] postNotificationName:@"Disable Pan" object:self];
     }
     
