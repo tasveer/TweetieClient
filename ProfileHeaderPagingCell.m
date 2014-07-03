@@ -102,6 +102,8 @@
                                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                                                     self.headerImage =    image;
                                                     weakImageView.image = image;
+                                                    //weakImageView.image = [self cropImage:image];
+                                                    //self.headerImage = weakImageView.image;
                                                     [weakImageView setNeedsLayout];
                                                     
                                                 } failure:nil];
@@ -178,4 +180,59 @@
         [self.containerView layoutIfNeeded];
     }
 }
+
+#pragma Image crop
+
+- (UIImage *) cropImage:(UIImage *)image {
+    
+    // Get size of current image
+    CGSize size = [image size];
+    
+    float imageAspect = size.width/size.height;
+    float contentViewAspect = self.contentView.frame.size.width / self.contentView.frame.size.width;
+    
+    float cropWidth;
+    float cropHeight;
+    
+    NSLog(@"image aspect %f contentAspect %f", imageAspect, contentViewAspect);
+    if (imageAspect != contentViewAspect) {
+        if (contentViewAspect == 1) {
+            if (size.width > size.height) {
+                cropWidth = size.height;
+                cropHeight = size.height;
+            } else {
+                cropWidth = size.width;
+                cropHeight = size.width;
+            }
+            
+        } else {
+            cropWidth = cropWidth/contentViewAspect;
+            cropHeight = cropWidth/(contentViewAspect*contentViewAspect);
+            
+         }
+        CGRect  contentRect = CGRectMake(size.width/2, size.height/2, cropWidth, cropHeight);
+        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], contentRect);
+        UIImage *img = [UIImage imageWithCGImage:imageRef];
+        CGImageRelease(imageRef);
+        return img;
+
+
+    } else return image;
+   // NSAssert(self.contentMode == UIViewContentModeScaleAspectFit, @"content mode must be aspect fit");
+    
+    /*
+     // Get image center
+    CGRect  contentRect = CGRectMake(size.width/2, size.height/2, self.contentView.frame.size.width, self.contentView.frame.size.height);
+
+    // Create bitmap image from original image data,
+    // using rectangle to specify desired crop area
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], contentRect);
+    UIImage *img = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    return img;
+     */
+}
+
+
 @end
